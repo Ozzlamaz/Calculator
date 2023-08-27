@@ -8,7 +8,7 @@ const buttonMap =
         elementID: 'clear'
     },
     {
-        sign: '÷',
+        sign: '/',
         number: false,
         operator: true,
         id: 2,
@@ -36,7 +36,7 @@ const buttonMap =
         elementID: 'nine'
     },
     {
-        sign: 'x',
+        sign: '*',
         number: false,
         operator: true,
         id: 6,
@@ -68,7 +68,7 @@ const buttonMap =
         number: false,
         operator: true,
         id: 10,
-        elementID: 'substract'
+        elementID: 'subtract'
     },
     {
         sign: '1',
