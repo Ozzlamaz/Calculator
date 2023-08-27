@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500&family=Oswald:wght@400;500&family=Pacifico&family=Play:wght@700&family=Poppins:wght@500&family=Roboto+Condensed:ital@0;1&family=Secular+One&display=swap');
+
 #root {
   max-width: 1280px;
   margin: 0 auto;
@@ -5,46 +7,44 @@
   text-align: center;
 }
 
+#title {
+  margin-bottom: 20px;
+}
+
 .numpad {
   display: grid;
-  grid-template: 100px 75px 75px 75px 75px 75px 75px/ 100px 100px 100px 100px;
+  grid-template: 50px 60px 75px 75px 75px 75px 75px/ 100px 100px 100px 100px;
   background-color: #122748;
   padding: 20px 10px;
   border-radius: 5px;
   gap: 5px;
 }
 
-#display {
+#display,#formula {
+  
   font-size: 30px;
   color: black;
   background-color: #bfd5ff;
+  text-align: right;
+  padding: 0 15px;
+}
+
+#formula {
+  margin-bottom: -5px;
   grid-column-start: 1;
   grid-column-end: 5;
-  text-align: right;
-  margin: auto 0;
-  padding: 25px 15px;
 }
 
-#title {
+#display {
+  margin-bottom: 10px;
   grid-column-start: 1;
-  grid-column-end: 4;
-  margin: auto 0;
-}
-
-#author {
-  grid-column-start: 1;
-  grid-column-end: 4;
+  grid-column-end: 5;
 }
 
 #clear {
-  grid-row-start: 2;
-  grid-column-start: 4;
+  grid-column-start: 3;
   color: black;
   background-color: #3e5b9d;
-}
-
-#divide {
-  grid-column-start: 4;
 }
 
 #zero {
@@ -54,8 +54,4 @@
 #equals {
   color: black;
   background-color: #3e5b9d;
-}
-
-.hide {
-  display: none;
 }
