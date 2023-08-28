@@ -3,10 +3,9 @@ import './App.css'
 import buttonMap from './data'
 
 const endsWithNumber = /\d$/;
-const endsWithZero = /0$/;
-const checkZero = /(?<=[1-9])0+$/;
-const checkDecimal = /(?<=[\d]+)(\.)\d+$/;
+const checkDecimal = /(\.)/;
 const checkminus = /([-]$)/;
+const checkEquals = /=/;
 
 function App() {
   
@@ -18,55 +17,70 @@ function App() {
     if(sign == 'C') {
       setResult('0');
       setHistory('');
-      // document.querySelector('.result').classList.remove('hide');
-      // document.querySelector('.history').classList.add('hide');
       return;
-    }
-
-    if (result == '0' && !endsWithNumber.test(sign) && history == '0') {
-      return;
-    }
-
-    if (checkDecimal.test(result) && sign == '.') {
-      return;
-    }
-
-    if (endsWithZero.test(result) && !checkZero.test(result) && sign != '.' && history == '0') {
-        let newResult = result.slice(0, result.length - 1) + sign;
-        setResult(newResult);
-        return;
-    }
-
-    if (!endsWithNumber.test(result) && !endsWithNumber.test(sign)) {
-      
-      if(history != '0') {
-        setResult(history);
-        setHistory('0');
-        // document.querySelectorAll('.results').forEach((span => span.classList.toggle('hide')));
-      }
-      if(sign != '-') {
-        let newResult = result.replace(/[\D]+$/, sign);
-        setResult(newResult);
-        return;
-      }
-      if (checkminus.test(result)) {
-        return;
-      }
     }
 
     if(sign == '=') {
-      // document.querySelectorAll('.results').forEach((span => span.classList.toggle('hide')));
-      setHistory(eval(result));
-      setResult('');
-      return history;
-    }
-    if(history != '0') {;
-      // document.querySelectorAll('.results').forEach((span => span.classList.toggle('hide')));
-      setResult(history + sign);
-      setHistory('0');
+      let newResult = eval(history);
+      setResult(eval(history));
+      setHistory(history + sign + newResult);
       return;
     }
-    setResult(result + sign)
+
+    if (checkEquals.test(history)) {
+
+      if (!endsWithNumber.test(sign)) {
+        setHistory(result + sign);
+        setResult(sign);
+        return;
+      }
+
+      if (endsWithNumber.test(sign)) {
+        setHistory(sign);
+        setResult(sign);
+        return;
+      }
+    }
+
+    if(history == '' && sign != '0') {
+      setResult(sign);
+      setHistory(sign);
+      return;
+    }
+
+    if(sign == '.') {
+      if(checkDecimal.test(result)) {
+        return;
+      }
+    }
+
+    if (result == '0') {
+      if(!endsWithNumber.test(sign) && sign != '.') {
+        return;
+      }
+      if (sign == '0') {
+        return;
+      }
+    }
+    
+    if(!endsWithNumber.test(sign) && sign != '.') {
+      if(sign != '-') {
+        let newResult = history + sign;
+        setHistory(newResult.replace(/[\D]+$/, sign));
+        setResult(sign);
+        return;
+      }
+      if (checkminus.test(history)) {
+        return;
+      }
+      setHistory(history + sign);
+      setResult(sign);
+      return;
+    }
+    setHistory(history + sign);
+    let newHistory = history + sign;
+    setResult(newHistory.match(/(?=[+|-|*|//]*)[\d]+\.*[\d]*$/));
+    
   }
 
   return (

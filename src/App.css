@@ -1,5 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500&family=Oswald:wght@400;500&family=Pacifico&family=Play:wght@700&family=Poppins:wght@500&family=Roboto+Condensed:ital@0;1&family=Secular+One&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500&family=Oswald:wght@400;500&family=Pacifico&family=Play:wght@700&family=Poppins:wght@500&family=Roboto+Condensed:ital@0;1&family=Secular+One&display=swap');
 #root {
   max-width: 1280px;
   margin: 0 auto;
@@ -12,6 +11,7 @@
 }
 
 .numpad {
+  font-size: 20px;;
   display: grid;
   grid-template: 50px 60px 75px 75px 75px 75px 75px/ 100px 100px 100px 100px;
   background-color: #122748;
@@ -21,7 +21,7 @@
 }
 
 #display,#formula {
-  
+  font-family: Orbitron, sans-serif;
   font-size: 30px;
   color: black;
   background-color: #bfd5ff;
